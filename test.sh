@@ -2,6 +2,6 @@
 . ~/venv/bin/activate
 
 cat ~/foo/metadata.xml |\
-    xq '."md:EntitiesDescriptor"."md:EntityDescriptor" |= sort_by(."@entityID")' |\
+    xq '."md:EntitiesDescriptor"."md:EntityDescriptor"[]."md:ContactPerson" |= sort_by(."@contactType",."md:EmailAddress",."md:SurName",."md:GivenName")' |\
     yq -r .
 
